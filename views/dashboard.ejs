@@ -17,25 +17,28 @@
 
 <body>
     <!-- <h2>Home</h2> -->
-    <h4>Olá, <%= user %></h4>
-    <a href="/users/logout">Logout</a>
+    <div class="dash">
+        <h4>Bem vindo, <%= user %></h4>
+        <a href="/users/logout">Logout</a>
+    </div>
+    
 
     
 
     <div class="container">
         <div class="item item-1">
-            <h1>Selecione seu perfil:</h1>
+            <h1>Escolha uma opção:</h1>
         </div>
         <div class="item item-2">
             <form action="/lista">
-                <button type="submit" class="btn btn-primary">Professor</button>
+                <button type="submit" class="btn btn-primary">Criar sala</button>
             </form>
         </div>
-        <div class="item item-3">
+        <!-- <div class="item item-3">
             <form action="form.html">
                 <button type="submit" class="btn btn-success">Aluno</button>
             </form>
-        </div>
+        </div> -->
         <div class="item item-4">
             <form action="/rel">
                 <button type="submit" class="btn btn-success">Relatórios</button>
