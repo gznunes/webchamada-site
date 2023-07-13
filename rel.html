@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form class="form" action="">
+            <label for="dataconsulta">Data:</label>
+            <input type="date" id="dataconsulta" name="dataconsulta">
+            <div class="form-group">
+                <label for="sala">Sala</label>
+                <input type="text" class="form-control" id="sala" name="sala" placeholder="Sala">
+            </div>
+            <div>
+                <button type="submit" id="btn1" class="btn">send</button>
+            </div>
+        </form>
+        <p></p>
+        <table></table>
+
+    </div>
+
+    <script>
+        
+        
+
+        
+
+        // const dataconsulta = document.getElementById("dataconsulta");
+        // const sala = document.getElementById("sala");
+        // const btn1 = document.getElementById("btn1")
+
+        // btn1.addEventListener('click',fun1);
+
+        // function fun1(){
+            
+        //     const datastr = dataconsulta.value.toString();
+        //     console.log(datastr) 
+        //     const url = "https://api-livros.onrender.com/chamada/" + datastr;
+        //     console.log(url)
+            
+        // }
+
+        
+
+        
+        // const urlf = url + dataconsulta.value;
+
+        // post
+        
+        const formEl = document.querySelector('.form');
+
+        formEl.addEventListener('submit', event => {
+            event.preventDefault();
+            
+            const formData = new FormData(formEl);
+            // formData.append('sala', sala);
+            // const t = Date.now()
+
+            // const t = new Date(Date.now()).toISOString();
+
+
+            // formData.append('data', t);
+            console.log(Object.fromEntries(formData));
+            const data = Object.fromEntries(formData);
+
+            fetch('https://api-livros.onrender.com/relchamada', {
+            // fetch('localhost:3000/chamada', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                return res.json();
+            }).then(data => {
+
+                data.forEach(user => {
+                    // console.log(data)
+                    console.log(user)
+                        // const markup = `Presença cadastrada, Sala: ${user.sala} Aluno: ${user.nome}<br>`;
+                        const markup = `<tr>
+                                        <th>${user.sala}</th>
+                                        <th>${user.nome}</th>
+                                        </tr>`;
+                document.querySelector('table').insertAdjacentHTML("beforeend",markup);
+                })
+                    
+                    
+                //     const markup = `Presença cadastrada, Sala: ${data.sala} Aluno: ${data.nome}<br>`;
+                // document.querySelector('p').insertAdjacentHTML("beforeend",markup);
+                })
+                .catch(error => console.log(error));
+        });
+
+        
+
+        
+
+
+    </script>
+
+</body>
+</html>
