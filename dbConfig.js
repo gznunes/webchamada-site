@@ -9,7 +9,8 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 // const connectionString = `postgres://webchamada_user:vjGoHcz6H1fVkNftqfrPBcW3cu5EafH7@dpg-cigfuitgkuvojj90m7eg-a/webchamada`;
 
 const pool = new Pool({
-  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+//   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+connectionString: `postgres://webchamada_user:vjGoHcz6H1fVkNftqfrPBcW3cu5EafH7@dpg-cigfuitgkuvojj90m7eg-a/webchamada`,
 //   ssl: isProduction
   ssl: true
 });
