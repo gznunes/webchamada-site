@@ -6,6 +6,9 @@ const flash = require("express-flash");
 const session = require("express-session");
 require("dotenv").config();
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
 
 const path = require('path');
 
