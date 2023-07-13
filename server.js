@@ -82,7 +82,7 @@ app.get('/users/logout', function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
     //   res.redirect('/');
-    res.render("index", { message: "You have logged out successfully" });
+    res.render("index", { message: "Você fez log out com sucesso." });
     });
   });
   
